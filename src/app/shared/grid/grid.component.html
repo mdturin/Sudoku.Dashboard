@@ -1,0 +1,10 @@
+<div class="grid">
+    <div *ngFor="let r of rowIndices" class="row">
+        <div *ngFor="let c of colIndices" class="cell">
+            <app-grid-input
+                [value]="grid[r][c]"
+                [borderColor]="getBorderColor(r, c)"
+            ></app-grid-input>
+        </div>
+    </div>
+</div>

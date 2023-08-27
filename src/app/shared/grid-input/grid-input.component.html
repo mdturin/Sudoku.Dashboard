@@ -1,13 +1,8 @@
-<p>grid-input works!</p>
-
-<div class="grid">
-    <div *ngFor="let r of rowIndices" class="row">
-        <div *ngFor="let c of colIndices" class="cell">
-            <input 
-            type="number" 
-            class="input-cell" 
-            maxlength="1"
-            [(ngModel)]="grid[r][c]">
-        </div>
-    </div>
-</div>
+<input
+    type={{type}}
+    step="1"
+    [value]="value"
+    [maxLength]="maxlength" 
+    [style.backgroundColor]="backgroundColor"
+    [ngStyle]="generateBorderColors()"
+/>

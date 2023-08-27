@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sudoku.component.scss']
 })
 export class SudokuComponent {
-
+  rows: number = 9;
+  cols: number = 9;
+  rowInGroup: number = 3;
+  colInGroup: number = 3;
+  grid: number[][] = Array(this.rows).fill(0).map(x => Array(this.cols).fill(0));
 }
