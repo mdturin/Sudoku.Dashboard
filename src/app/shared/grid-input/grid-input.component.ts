@@ -5,7 +5,7 @@ import { Margin } from '../models/Margin';
 @Component({
   selector: 'app-grid-input',
   templateUrl: './grid-input.component.html',
-  styleUrls: ['./grid-input.component.scss']
+  styleUrls: ['./grid-input.component.scss'],
 })
 export class GridInputComponent {
   @Input() value: number = 0;
@@ -22,7 +22,7 @@ export class GridInputComponent {
       'border-top': this.borderColor.getTop(),
       'border-right': this.borderColor.getRight(),
       'border-bottom': this.borderColor.getBottom(),
-      'border-left': this.borderColor.getLeft()
+      'border-left': this.borderColor.getLeft(),
     };
 
     return result;
@@ -33,7 +33,7 @@ export class GridInputComponent {
       'margin-top': `${this.margin.top}px`,
       'margin-right': `${this.margin.right}px`,
       'margin-bottom': `${this.margin.bottom}px`,
-      'margin-left': `${this.margin.left}px`
+      'margin-left': `${this.margin.left}px`,
     };
 
     return result;
@@ -44,16 +44,21 @@ export class GridInputComponent {
     if (input.value.length > 1) {
       input.value = input.value.slice(0, 1);
     }
-    input.blur();
+    if (input.value.length > 0) {
+      input.blur();
+    }
   }
 
   onKeyDown(event: any): void {
     const allowedKeyCodes = [8, 9, 13, 27, 46]; // Allow Backspace, Tab, Enter, Escape, Delete
     const inputValue = event.key;
 
-    if(event.keyCode === 48 || event.keyCode === 96) {
+    if (event.keyCode === 48 || event.keyCode === 96) {
       event.preventDefault();
-    } else if (!/^\d$/.test(inputValue) && !allowedKeyCodes.includes(event.keyCode)) {
+    } else if (
+      !/^\d$/.test(inputValue) &&
+      !allowedKeyCodes.includes(event.keyCode)
+    ) {
       event.preventDefault();
     }
   }

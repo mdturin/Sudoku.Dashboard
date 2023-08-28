@@ -1,10 +1,16 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { Border } from '../models/Border';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
   @Input() rows: number = 0;
@@ -14,12 +20,19 @@ export class GridComponent {
   @Input() rowInGroup: number = 0;
   @Input() colInGroup: number = 0;
 
+  @ViewChildren('gridInput', { read: ElementRef })
+    gridInputs!: QueryList<ElementRef>;
+
   get rowIndices(): number[] {
-    return Array(this.rows).fill(0).map((x, i) => i);
+    return Array(this.rows)
+      .fill(0)
+      .map((x, i) => i);
   }
 
   get colIndices(): number[] {
-    return Array(this.cols).fill(0).map((x, i) => i);
+    return Array(this.cols)
+      .fill(0)
+      .map((x, i) => i);
   }
 
   getCell(row: number, col: number): number {
@@ -52,7 +65,21 @@ export class GridComponent {
     return border;
   }
 
-  onInput(event: any, row: number, col: number): void {
-    
+  onInput(event: Event, r: number, c: number): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > 0) {
+      const nextIndex = this.getNextIndex(r, c);
+      var inputElement = this.gridInputs.toArray()[nextIndex];
+      if(inputElement) {
+        inputElement.nativeElement.querySelector('input').focus();
+      }
+    }
+  }
+
+  getNextIndex(r: number, c: number): number {
+    var idx = r * this.cols + c + 1;
+    if (idx >= this.rows * this.cols) {
+      idx = this.rows * this.cols - 1;
+    } return idx;
   }
 }
