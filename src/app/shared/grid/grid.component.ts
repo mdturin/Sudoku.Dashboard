@@ -52,4 +52,7 @@ export class GridComponent {
     return border;
   }
 
+  onInput(event: any, row: number, col: number): void {
+    
+  }
 }

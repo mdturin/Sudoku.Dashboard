@@ -39,6 +39,14 @@ export class GridInputComponent {
     return result;
   }
 
+  onInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > 1) {
+      input.value = input.value.slice(0, 1);
+    }
+    input.blur();
+  }
+
   onKeyDown(event: any): void {
     const allowedKeyCodes = [8, 9, 13, 27, 46]; // Allow Backspace, Tab, Enter, Escape, Delete
     const inputValue = event.key;

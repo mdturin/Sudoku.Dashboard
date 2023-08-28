@@ -6,6 +6,7 @@
     [style.backgroundColor]="backgroundColor"
     [ngStyle]="generateBorderColors()"
     (keydown)="onKeyDown($event)"
+    (input)="onInput($event)"
     [defaultValue]="defaultValue"
     [placeholder]="placeholder"
 />
