@@ -42,7 +42,7 @@ export class GridInputComponent {
   onInput(event: any): void {
     const input = event.target as HTMLInputElement;
     if (input.value.length > 1) {
-      input.value = input.value.slice(0, 1);
+      input.value = input.value.slice(1);
     }
     if (input.value.length > 0) {
       input.blur();
