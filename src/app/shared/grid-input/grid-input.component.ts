@@ -11,9 +11,11 @@ export class GridInputComponent {
   @Input() value: number = 0;
   @Input() maxlength: number = 1;
   @Input() type: string = 'number';
+  @Input() defaultValue: number = 0;
   @Input() margin: Margin = new Margin();
   @Input() backgroundColor: string = 'white';
   @Input() borderColor: Border = new Border();
+  @Input() placeholder: string = '0';
 
   generateBorderColors(): any {
     var result = {
@@ -35,5 +37,16 @@ export class GridInputComponent {
     };
 
     return result;
+  }
+
+  onKeyDown(event: any): void {
+    const allowedKeyCodes = [8, 9, 13, 27, 46]; // Allow Backspace, Tab, Enter, Escape, Delete
+    const inputValue = event.key;
+
+    if(event.keyCode === 48 || event.keyCode === 96) {
+      event.preventDefault();
+    } else if (!/^\d$/.test(inputValue) && !allowedKeyCodes.includes(event.keyCode)) {
+      event.preventDefault();
+    }
   }
 }

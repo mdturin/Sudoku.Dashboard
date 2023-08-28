@@ -1,8 +1,11 @@
 <input
     type={{type}}
     step="1"
-    [value]="value"
+    [(ngModel)]="value"
     [maxLength]="maxlength" 
     [style.backgroundColor]="backgroundColor"
     [ngStyle]="generateBorderColors()"
+    (keydown)="onKeyDown($event)"
+    [defaultValue]="defaultValue"
+    [placeholder]="placeholder"
 />
