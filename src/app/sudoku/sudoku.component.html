@@ -1,9 +1,33 @@
-<p>sudoku works!</p>
+<div class="container grid-container">
+  <div class="left-panel">
+    <div class="select-type">
+      <h3>Types</h3>
+      <app-select-options [options]="selectTypes" (selectedOption)="onTypeSelected($event)">
+      </app-select-options>
+    </div>
 
-<app-grid
-  [grid]="grid"
-  [rows]="rows"
-  [cols]="cols"
-  [rowInGroup]="rowInGroup"
-  [colInGroup]="colInGroup"
-></app-grid>
+    <hr>
+
+    <div class="select-grid-size">
+      <h3>Grid Size</h3>
+      <app-select-options [options]="selectSizes" (selectedOption)="onSizeSelected($event)">
+      </app-select-options>
+    </div>
+
+    <hr>
+
+    <button class="btn btn-primary" (click)="onGenerateClick()">Generate</button>
+    <button class="btn btn-success" (click)="onSolveClick()">Solve</button>
+    <button class="btn btn-danger" (click)="onClearClick()">Clear</button>
+  </div>
+
+  <div class="grid-panel">
+    <app-grid
+      [grid]="grid"
+      [rows]="rows"
+      [cols]="cols"
+      [rowInGroup]="rowInGroup"
+      [colInGroup]="colInGroup"
+    ></app-grid>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.grid-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.left-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.left-panel > button{
+    margin: 5px;
+}
+
+.grid-panel{
+    margin-left: 30px;
+}
