@@ -2,16 +2,17 @@
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr); /* Adjust the number of columns */
   gap: 0px;
+  margin: 2px;
 }
 
-.row {
+.grid-row {
   display: flex;
   flex-direction: row;
   padding: 0px;
   margin: 0px;
 }
 
-.cell {
+.grid-cell {
   border: 0px solid #000000;
   width: 50px;
 }

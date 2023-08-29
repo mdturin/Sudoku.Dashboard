@@ -1,6 +1,6 @@
 <div class="grid">
-    <div *ngFor="let r of rowIndices" class="row">
-        <div *ngFor="let c of colIndices" class="cell">
+    <div *ngFor="let r of rowIndices" class="grid-row">
+        <div *ngFor="let c of colIndices" class="grid-cell">
             <app-grid-input
                 #gridInput
                 [value]="grid[r][c]"
